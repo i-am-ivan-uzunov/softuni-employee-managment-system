@@ -1,14 +1,14 @@
-export default function CreateEditUserModal() {
+export default function CreateEditUserModal({ submitHandler, cancelHandler }) {
   return (
     <>
       {/*  Create/Edit Form component   */}
       <div className="overlay">
-        <div className="backdrop"></div>
+        <div className="backdrop" onClick={cancelHandler}></div>
         <div className="modal">
           <div className="user-container">
             <header className="headers">
               <h2>Edit User/Add User</h2>
-              <button className="btn close">
+              <button className="btn close" onClick={cancelHandler}>
                 <svg
                   aria-hidden="true"
                   focusable="false"
@@ -26,7 +26,7 @@ export default function CreateEditUserModal() {
                 </svg>
               </button>
             </header>
-            <form>
+            <form onSubmit={submitHandler}>
               <div className="form-row">
                 <div className="form-group">
                   <label htmlFor="firstName">First name</label>
@@ -124,7 +124,12 @@ export default function CreateEditUserModal() {
                 <button id="action-save" className="btn" type="submit">
                   Save
                 </button>
-                <button id="action-cancel" className="btn" type="button">
+                <button
+                  id="action-cancel"
+                  className="btn"
+                  type="button"
+                  onClick={cancelHandler}
+                >
                   Cancel
                 </button>
               </div>
